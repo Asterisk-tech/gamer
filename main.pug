@@ -1,0 +1,145 @@
+extends layout.pug
+block head
+  style.
+    #tron {
+      background-image:url('./assets/pcs.jpg');
+    }
+    #navigation {
+      background-color:#222;
+    }
+    .uk-logo > svg {
+      height:80px;
+      width:80px;
+    }
+    .uk-logo > svg path {
+      /* fill:rgb(149, 89, 196); */
+      fill:#dedede;
+    }
+    .small-caps {
+      font-variant:small-caps;
+    }
+    .uk-background-primary, .uk-button-primary {
+      background-color:rgb(149, 89, 196);
+    }
+    .uk-button-primary:hover {
+      background-color:rgb(186, 137, 224);
+    }
+    .uk-text-primary {
+      color:rgb(149, 89, 196)!important;
+    }
+mixin plan-item(title, top)
+  li.uk-padding-small.uk-padding-remove-bottom(class=(top?'uk-padding-remove-top':'')) #[span(uk-icon='check')] &nbsp; #[=title]
+mixin plan(title)
+  div
+    .uk-card.uk-card-default.uk-card-hover
+      .uk-card-header
+        h3.uk-card-title.uk-text-center=title
+      ul.uk-list.uk-list-divider(style='margin:10px 0')
+        block
+      button.uk-button.uk-button-primary.uk-width-1-1 Buy
+block header
+  header.uk-width-1-1(uk-sticky)
+    nav#navigation.uk-navbar-container(uk-navbar)
+      .uk-navbar-center
+        a.uk-navbar-item.uk-logo(href='/') 
+          include ../assets/cubicle.svg
+      .uk-navbar-left
+        ul.uk-navbar-nav
+          li.uk-navbar-item #[a(href='#' uk-toggle='target:#offcanvas') Game place. inc.]
+        //-#[img(src='../assets/cubicle.svg')]
+      .uk-navbar-right
+        ul.uk-navbar-nav
+          //-li.uk-navbar-item #[a(href='#') Contact]
+          li.uk-navbar-item #[a(href='#plans' uk-scroll) Plans]
+          //-li.uk-navbar-item #[a(href='#') Login]
+block main
+  .uk-inline.uk-width-1-1.uk-height-medium(style='background:rgb(149, 89, 196)')
+    #tron.uk-background-cover.uk-light.uk-blend-overlay.uk-height-medium.uk-width-1-1(uk-parallax='bgy:-200')
+    .uk-overlay.uk-position-center
+      h1(style='color:white;') A space for #[span#space putting hooks here.]
+      
+  section.uk-width-1-1.uk-padding.uk-background-muted
+    .uk-container
+      h2.uk-heading-small.uk-text-center.small-caps.uk-margin-remove Our Community 
+      h3.uk-text-center.small-caps.uk-text-muted.uk-margin-remove at a glance
+      hr
+      .uk-child-width-1-4.uk-padding(uk-grid uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 500")
+        div.uk-text-center
+          h3.uk-text-primary.small-caps #[span.uk-heading-small.uk-text-primary 10]-ish
+          span Events per month
+        div.uk-text-center
+          h3.uk-text-primary.small-caps #[span.uk-heading-small.uk-text-primary 200]+
+          span Attendees across all events
+        div.uk-text-center
+          h3.uk-text-primary.small-caps #[span.uk-heading-small.uk-text-primary 50]
+          span Members and growing
+        div.uk-text-center
+          h3.uk-text-primary.small-caps #[span.uk-heading-small.uk-text-primary 6]
+          span Community Partners
+  #plans.uk-inline.uk-width-1-1.uk-height-large(style='background:rgb(149, 89, 196)')
+    .uk-background-cover.uk-light.uk-blend-overlay.uk-width-1-1(uk-parallax='bgy:-200' style='height:100%; background-image:url("./assets/keyboard.webp")')
+    .uk-overlay.uk-position-cover
+      .uk-container
+        h1.uk-text-center.small-caps(style='color:white;') Plans
+        .uk-child-width-1-3.uk-grid-small(uk-grid)
+          +plan('Economy')
+            +plan-item('Can play games', true)
+            +plan-item('Access 2 days per week')
+          +plan('Standard')
+            +plan-item('Half off entry to events', true)
+            +plan-item('Access 5 days per week')
+            +plan-item('Hand warmer')
+            +plan-item('Personal locker')
+          +plan('Gamer')
+            +plan-item('Free entry to events', true)
+            +plan-item('Access 7 days per week')
+            +plan-item('Reserved seating options')
+            +plan-item('Butt warmer')
+  section.uk-width-1-1.uk-padding.uk-background-muted
+    .uk-container
+      h2.uk-heading-small.uk-text-center.small-caps.uk-margin-remove Our Amenities
+      hr
+      .uk-child-width-1-3.uk-grid-large(uk-grid)
+        div.uk-text-center
+          h1.uk-width-1-1.uk-text-primary(uk-icon='icon:desktop;ratio:2;')
+          span High End Gaming PCs
+          p We're not banging rocks together here, we've got the goods.
+        div.uk-text-center
+          h1.uk-width-1-1.uk-text-primary(uk-icon='icon:lock;ratio:2;')
+          span Dedicated lockers
+          p Bring yourself a lock and store your stuff securely!
+        div.uk-text-center
+          h1.uk-width-1-1.uk-text-primary(uk-icon='icon:bolt;ratio:2;')
+          span High Speed Internet
+          p The ISPs only let us get this speed because we threatened them.
+        div.uk-text-center
+          h1.uk-width-1-1.uk-text-primary(uk-icon='icon:youtube;ratio:2;')
+          span Streaming Setups
+          p Becoming the next Ninja? We can help you with that.
+        div.uk-text-center
+          h1.uk-width-1-1.uk-text-primary(uk-icon='icon:server;ratio:2;')
+          span Secure Environments.
+          p Our PCs are deep froze for security and peace of mind.
+        div.uk-text-center
+          h1.uk-width-1-1.uk-text-primary(uk-icon='icon:users;ratio:2;')
+          span Community Hub
+          p Find us on Discord, and chat with us!
+  //-div.uk-background-secondary(style='height:200vh')
+block footer
+  footer.uk-padding.uk-background-secondary.uk-width-1-1
+    .uk-container
+      .uk-width-1-1.uk-child-width-1-4.uk-grid-small(uk-grid)
+        div
+          ul.uk-nav.uk-nav-default
+            li: a(href='/') Discord
+            li: a(href='/') Facebook
+            li: a(href='/') Instagram
+            li: a(href='/') Twitter
+        div.uk-width-1-2
+          ul.uk-nav.uk-nav-default
+            li: a(href='/') Privacy Policy
+            li: a(href='/') Terms of Service
+            li: a(href='/') Careers
+            li: a(href='/') Contact
+        div
+          a(href='https://bitdev.io/'): img(src='../assets/bitdev-logo-white.png')

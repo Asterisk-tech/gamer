@@ -1,0 +1,19 @@
+html
+  head
+    link(rel='stylesheet' href='../assets/uikit.min.css')
+    script(src='../assets/uikit.min.js')
+    script(src='../assets/uikit-icons.min.js')
+    block head
+  body
+    #offcanvas(uk-offcanvas='mode:push')
+      .uk-offcanvas-bar
+        button.uk-offcanvas-close(type='button' uk-close)
+        ul.uk-list
+          li Test
+          li Test 2
+    block header
+      header
+    main
+      block main
+    block footer
+      footer
